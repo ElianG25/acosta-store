@@ -50,7 +50,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wordmark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;white-space:nowrap;line-height:1}
 .wordmark img{height:36px;width:auto}
 .wordmark span{display:flex;flex-direction:column;align-items:center;gap:5px}
-.wordmark small{font-size:9px;letter-spacing:.7em;margin-right:-.7em;font-weight:500}
+.wordmark small{font-size:11px;letter-spacing:.55em;margin-right:-.55em;font-weight:500}
 .nav-links{display:flex;gap:clamp(18px,2.6vw,40px)}
 .nav-links a{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:8px;font-size:15px;font-weight:500;padding:6px 0;transition:text-decoration-color .3s}
 .nav-links a:hover{text-decoration-color:currentColor}
