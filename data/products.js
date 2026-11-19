@@ -50,6 +50,15 @@ window.ACOSTA = {
       ideal: "Rutina diaria de hidratación"
     },
     {
+      id: "bbw", cat: "cuidado", vibe: "elegante", name: "Bath & Body Works", gender: "Unisex", kind: "Crema corporal y colonia",
+      ask: true,                          // precio por confirmar: se consulta por WhatsApp
+      price: 0, sizeLabel: "Aroma", sizes: ["Into the Night", "In the Stars", "Platinum", "Japanese Cherry Blossom", "A Thousand Wishes", "Champagne Toast"],
+      image: "assets/photos/bbw-1.jpg", images: ["assets/photos/bbw-1.jpg", "assets/photos/bbw-2.jpg", "assets/photos/bbw-3.jpg", "assets/photos/bbw-4.jpg", "assets/photos/bbw-5.jpg", "assets/photos/bbw-6.jpg"], ground: "#E9D9DD", tint: "#C4A27A",
+      tagline: "Crema corporal y colonia (fragrance mist) Bath & Body Works en aromas para todos los gustos.",
+      specs: [["Marca", "Bath & Body Works"], ["Productos", "Crema corporal y fragrance mist"], ["Precio", "Consúltalo por WhatsApp"]],
+      ideal: "Regalos y rutina de cuidado personal"
+    },
+    {
       id: "vitaminas", cat: "cuidado", vibe: "elegante", name: "Hair, Skin & Nails Gummies", gender: "Femenino", kind: "Vitaminas en gomitas",
       price: 1000, sizeLabel: "Presentación", sizes: ["Único"],
       image: "assets/photos/vitaminas-1.jpg", images: ["assets/photos/vitaminas-1.jpg"], ground: "#EFE0DF", tint: "#C4A27A",

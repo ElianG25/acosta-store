@@ -82,10 +82,16 @@
     if (!sel.value) { toast("Elige tu " + sel.getAttribute("data-label").toLowerCase() + " primero."); shake(sel); sel.focus(); return null; }
     return sel.value;
   }
-  function addFrom(btn) { var sz = pickSize(btn); if (sz) add(btn.getAttribute("data-add"), sz, btn); }
+  function addFrom(btn) { var sz = pickSize(btn); if (!sz) return; var p = byId(btn.getAttribute("data-add")); if (p.ask) askPrice(p, sz); else add(p.id, sz, btn); }
   function sizeUi(p, id) {
     if (p.sizes.length === 1) return "";
     return '<select class="size-sel" id="' + (id || "") + '" data-label="' + p.sizeLabel + '" aria-label="' + p.sizeLabel + ' de ' + p.name + '"><option value="">' + p.sizeLabel + '</option>' + p.sizes.map(function (z) { return "<option>" + z + "</option>"; }).join("") + "</select>";
+  }
+  function priceTxt(p) { return p.ask ? "Precio por confirmar" : money(p.price); }
+  function buyLbl(p) { return p.ask ? ICON("wa") + " Consultar" : ICON("bag") + " Añadir"; }
+  function askPrice(p, size) {
+    openWa("\ud83d\udc4b ¡Hola, *Acosta Store*! Quiero saber el precio de \u2728 *" + p.name + "*" + (size && size !== "Único" ? " (" + p.sizeLabel.toLowerCase() + ": " + size + ")" : "") + ".");
+    toast("Abrimos WhatsApp para consultar el precio");
   }
   function addAttrs(p) { return 'data-add="' + p.id + '" data-size="' + (p.sizes.length === 1 ? p.sizes[0] : "") + '"'; }
   function totals() {
@@ -215,7 +221,8 @@
       $("#heroSize").setAttribute("data-label", p.sizeLabel);
       $("#heroSize").hidden = p.sizes.length === 1;
       $("#heroTag").textContent = p.tagline;
-      $("#heroPrice").textContent = money(p.price);
+      $("#heroPrice").textContent = priceTxt(p);
+      $("#heroAdd").innerHTML = buyLbl(p);
       heroPick.classList.remove("swap");
     };
     if (first) fill(); else { heroPick.classList.add("swap"); setTimeout(function () { if (cur === i) fill(); }, 160); }
@@ -261,7 +268,7 @@
   $("#heroAdd").onclick = function () {
     if (cur < 0) return; var p = P[cur], hs = $("#heroSize"), sz = p.sizes.length === 1 ? p.sizes[0] : hs.value;
     if (!sz) { toast("Elige tu " + p.sizeLabel.toLowerCase() + " primero."); shake(hs); hs.focus(); return; }
-    add(p.id, sz, this);
+    if (p.ask) askPrice(p, sz); else add(p.id, sz, this);
   };
   $("#heroDetail").onclick = function () { if (cur < 0) return; selectFicha(P[cur].id); document.getElementById("fichas").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); };
   window.addEventListener("resize", function () { if (cur >= 0) goto(cur, true); paint(); });
@@ -278,13 +285,13 @@
     return '<article class="card is-in" style="--i:' + i + '"><div class="card-media">' +
       '<button class="card-img" type="button" data-fic="' + p.id + '" aria-label="Ver la detalle de ' + p.name + '"><img src="' + p.image + '" alt="' + p.name + ', ' + p.kind + '" width="360" height="480" loading="lazy"></button>' + favBtn(p) + '</div>' +
       '<div class="card-body" data-prod><h3 class="card-name">' + p.name + '</h3><p class="card-fact">' + p.kind + ' · ' + p.gender + '</p>' +
-      '<p class="card-price">' + money(p.price) + '</p>' +
-      '<div class="card-buy">' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + ICON("bag") + ' Añadir</button></div></div></article>';
+      '<p class="card-price">' + priceTxt(p) + '</p>' +
+      '<div class="card-buy">' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + buyLbl(p) + '</button></div></div></article>';
   }
   function renderGrid() {
     var list = P.filter(function (p) { return view.filter === "all" || (view.filter === "fav" ? favs.indexOf(p.id) > -1 : p.cat === view.filter); });
-    if (view.sort === "asc") list.sort(function (a, b) { return a.price - b.price; });
-    else if (view.sort === "desc") list.sort(function (a, b) { return b.price - a.price; });
+    if (view.sort === "asc") list.sort(function (a, b) { return (a.ask ? 1e9 : a.price) - (b.ask ? 1e9 : b.price); });
+    else if (view.sort === "desc") list.sort(function (a, b) { return (a.ask ? -1 : b.price) - (b.ask ? -1 : a.price); });
     else if (view.sort === "az") list.sort(function (a, b) { return a.name.localeCompare(b.name, "es"); });
     if (!list.length) {
       grid.innerHTML = '<div class="empty-grid">' + ICON("heart") + '<h3>Aún no tienes favoritos</h3><p>Toca el corazón de cualquier producto para guardarlo aquí y compararlo después.</p><button class="btn btn-wine" type="button" data-resetfilter>Ver todo</button></div>';
@@ -336,7 +343,7 @@
       (p.images.length > 1 ? '<div class="thumbs" role="group" aria-label="Más fotos de ' + p.name + '">' + p.images.map(function (src, k) { return '<button type="button" data-thumb="' + src + '" aria-pressed="' + (k === 0) + '" aria-label="Foto ' + (k + 1) + '"><img src="' + src + '" alt="" width="64" height="64" loading="lazy"></button>'; }).join("") + '</div>' : "") +
       '<dl class="notes">' + p.specs.map(function (x) { return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join("") + '</dl>' +
       '<p class="f-ideal"><b>Ideal para:</b> ' + p.ideal + '</p>' +
-      '<div class="f-buy" data-prod><span class="f-price">' + money(p.price) + '</span>' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + ICON("bag") + ' Añadir</button></div>';
+      '<div class="f-buy" data-prod><span class="f-price">' + priceTxt(p) + '</span>' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + buyLbl(p) + '</button></div>';
   }
   ficNames.addEventListener("click", function (e) { var b = e.target.closest("[data-id]"); if (b) selectFicha(b.getAttribute("data-id")); });
   ficha.addEventListener("click", function (e) {
@@ -368,8 +375,8 @@
     }
     var r = quizPick(), p = r.p; if (!p) return;
     var why = "Estilo " + p.vibe + " · " + p.ideal.toLowerCase() + "." + (r.s < 7 ? " Es lo más cercano a lo que elegiste." : "");
-    qr.innerHTML = '<div class="q-body"><p class="q-fam">Tu match · ' + p.kind + '</p><h3>' + p.name + '</h3><p class="q-why">' + why + '</p><p class="q-price">' + money(p.price) + '</p>' +
-      '<div class="q-buy" data-prod>' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + ICON("bag") + ' Añadir</button><button class="mini mini-soft" type="button" data-ficha="' + p.id + '">Ver ficha</button></div></div>' +
+    qr.innerHTML = '<div class="q-body"><p class="q-fam">Tu match · ' + p.kind + '</p><h3>' + p.name + '</h3><p class="q-why">' + why + '</p><p class="q-price">' + priceTxt(p) + '</p>' +
+      '<div class="q-buy" data-prod>' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + buyLbl(p) + '</button><button class="mini mini-soft" type="button" data-ficha="' + p.id + '">Ver ficha</button></div></div>' +
       '<div class="q-img"><img src="' + p.image + '" alt="' + p.name + ', ' + p.kind + '" width="360" height="480"></div>';
     burstAt($(".q-img", qr), 14);
   }
