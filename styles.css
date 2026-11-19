@@ -100,7 +100,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .chip:hover{background:var(--sand);transform:translateY(-2px)}
 .chip.is-on{background:var(--wine);color:var(--cream)}
 
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:40px 12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 12px}
 .card{display:flex;flex-direction:column;min-width:0}
 .card.is-in{animation:rise .6s var(--ease) both;animation-delay:calc(var(--i,0)*60ms)}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -124,7 +124,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wide p{max-width:36ch;margin-top:16px}
 .wide .btn{align-self:flex-start;margin-top:28px}
 .wide-2{grid-column:span 2;background:var(--wine);color:var(--cream)}
-.wide-3{grid-column:span 3;background:var(--gold);color:var(--deep)}
+.wide-3{grid-column:span 4;background:var(--gold);color:var(--deep)}
 .wide-3 h3{max-width:16ch}
 
 /* fichas */
@@ -178,7 +178,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .promo h2{grid-column:1 / span 7;max-width:14ch;font-size:clamp(44px,6.4vw,96px);line-height:.95}
 .promo-side{grid-column:9 / span 4}
 .promo-side p{font-size:19px;max-width:32ch}
-.code{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:68px;padding:0 24px;background:var(--deep);color:var(--cream);border:0;transition:transform .25s var(--ease),background .25s}
+.code{text-decoration:none;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:68px;padding:0 24px;background:var(--deep);color:var(--cream);border:0;transition:transform .25s var(--ease),background .25s}
 .code:hover{transform:translateY(-2px);background:var(--wine)}
 .code-text{font-family:var(--serif);font-weight:700;font-size:28px;letter-spacing:.06em}
 .code-hint{font-weight:600;color:var(--gold)}
@@ -286,7 +286,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* ---------- tablet ---------- */
 @media (max-width:1100px){
   .grid{grid-template-columns:repeat(3,1fr)}
-  .wide-2{grid-column:span 1}.wide-3{grid-column:span 3}
+  .wide-2{grid-column:span 3}.wide-3{grid-column:span 3}
   .nav-links{display:none}
   .menu-btn{display:inline-flex;align-items:center}
   .nav-links.open{display:flex;position:fixed;inset:72px 0 0 0;background:var(--ground);flex-direction:column;padding:32px var(--m);gap:8px}
@@ -327,11 +327,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .hero-buy .btn{flex:1}
   .sec-head .sec-sub{grid-column:1 / -1}
   .grid{grid-template-columns:repeat(2,1fr);gap:28px 8px}
-  .wide-2{grid-column:span 1;min-height:0;padding:18px 14px}
-  .wide-2 h3{font-size:26px}
-  .wide-2 p{display:none}
-  .wide-2 .btn{padding:0 14px;min-height:48px;font-size:15px}
-  .wide-3{grid-column:1 / -1;min-height:320px}
+  .wide-2,.wide-3{grid-column:1 / -1;min-height:320px}
   .card-buy{flex-direction:column}
   .card-buy .mini{width:100%}
   .card-name{font-size:20px}

@@ -55,13 +55,13 @@
   }
 
   /* ---------- estado del pedido ---------- */
-  var cart = store.get("ac_cart", []), code = store.get("ac_code", ""), ship = store.get("ac_ship", { name: "", zone: "" }), favs = store.get("ac_fav", []);
+  var cart = store.get("ac_cart", []), third = store.get("ac_third", false), ship = store.get("ac_ship", { name: "", zone: "" }), favs = store.get("ac_fav", []);
   if (!Array.isArray(cart)) cart = []; if (!Array.isArray(favs)) favs = [];
   cart = cart.filter(function (l) { return l && byId(l.id) && byId(l.id).sizes.indexOf(l.size) > -1 && l.qty > 0; });
   favs = favs.filter(function (id) { return byId(id); });
-  if (typeof code !== "string") code = "";
+  third = third === true;
   if (!ship || typeof ship !== "object") ship = { name: "", zone: "" };
-  function saveCart() { store.set("ac_cart", cart); store.set("ac_code", code); store.set("ac_ship", ship); }
+  function saveCart() { store.set("ac_cart", cart); store.set("ac_third", third); store.set("ac_ship", ship); }
 
   function add(id, size, origin) {
     var l = cart.filter(function (x) { return x.id === id && x.size === size; })[0];
@@ -69,30 +69,29 @@
     if (l) l.qty++; else cart.push({ id: id, size: size, qty: 1 });
     saveCart(); renderCart();
     var c = $("#cartCount"); c.classList.remove("bump"); void c.offsetWidth; c.classList.add("bump");
-    toast("Añadido: " + byId(id).name + (size === "Único" ? "" : " · talla " + size));
+    toast("Añadido: " + byId(id).name + (size === "Único" ? "" : " · " + byId(id).sizeLabel.toLowerCase() + " " + size));
     if (origin) { fly(origin, byId(id).image); burstAt(origin, 8); }
     return true;
   }
   function unit(l) { return byId(l.id).price; }
-  function sizeTxt(l) { return l.size === "Único" ? byId(l.id).kind : "Talla " + l.size; }
+  function sizeTxt(l) { return l.size === "Único" ? byId(l.id).kind : byId(l.id).sizeLabel + ": " + l.size; }
   /* talla elegida para un botón de añadir (select hermano o tamaño fijo) */
   function pickSize(btn) {
     var c = btn.closest("[data-prod]"), sel = c && c.querySelector(".size-sel");
     if (!sel) return btn.getAttribute("data-size") || "Único";
-    if (!sel.value) { toast("Elige tu talla primero."); shake(sel); sel.focus(); return null; }
+    if (!sel.value) { toast("Elige tu " + sel.getAttribute("data-label").toLowerCase() + " primero."); shake(sel); sel.focus(); return null; }
     return sel.value;
   }
   function addFrom(btn) { var sz = pickSize(btn); if (sz) add(btn.getAttribute("data-add"), sz, btn); }
   function sizeUi(p, id) {
     if (p.sizes.length === 1) return "";
-    return '<select class="size-sel" id="' + (id || "") + '" aria-label="Talla de ' + p.name + '"><option value="">Talla</option>' + p.sizes.map(function (z) { return "<option>" + z + "</option>"; }).join("") + "</select>";
+    return '<select class="size-sel" id="' + (id || "") + '" data-label="' + p.sizeLabel + '" aria-label="' + p.sizeLabel + ' de ' + p.name + '"><option value="">' + p.sizeLabel + '</option>' + p.sizes.map(function (z) { return "<option>" + z + "</option>"; }).join("") + "</select>";
   }
   function addAttrs(p) { return 'data-add="' + p.id + '" data-size="' + (p.sizes.length === 1 ? p.sizes[0] : "") + '"'; }
   function totals() {
     var sub = cart.reduce(function (s, l) { return s + unit(l) * l.qty; }, 0);
-    var ok = !!code && code.toUpperCase() === D.promo.code;
-    var disc = ok ? Math.round(sub * D.promo.pct / 100) : 0;
-    return { sub: sub, disc: disc, total: sub - disc, ok: ok, gift: sub > D.promo.giftOver };
+    var disc = third ? Math.round(sub * D.promo.pct / 100) : 0;
+    return { sub: sub, disc: disc, total: sub - disc, ok: third };
   }
 
   /* ---------- validaciones ---------- */
@@ -116,6 +115,7 @@
     if (d.length !== 10 || !/^(809|829|849)/.test(d)) return "Escribe un número dominicano válido, ej. 809-555-1234.";
     return "";
   }
+  function zoneError(v) { return v.trim().length < 3 ? "Escribe tu ciudad y sector de entrega." : ""; }
   function shake(el) { if (reduce) return; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
 
   /* ---------- carrito (diálogo) ---------- */
@@ -140,29 +140,18 @@
     }).join("");
     var t = totals();
     foot.innerHTML =
-      (t.gift ? '<p class="gift">' + ICON("gift") + ' Tu pedido incluye un producto de cuidado personal de regalo.</p>' : '<p class="note" style="margin:0 0 12px">Compras de más de ' + money(D.promo.giftOver) + ': producto de cuidado de regalo.</p>') +
-      '<form class="promo-row" id="promoForm" novalidate><label class="sr" for="promoIn">Código de descuento</label><input id="promoIn" placeholder="Tu código" value="' + (code || "").replace(/"/g, "") + '" autocomplete="off" maxlength="20"><button type="submit">Aplicar</button></form>' +
-      '<p class="msg ' + (t.ok ? "ok" : (code ? "bad" : "")) + '" id="promoMsg" role="status">' + (t.ok ? "Código aplicado: " + D.promo.pct + " % de descuento." : (code ? "Ese código no es válido." : "")) + '</p>' +
+      '<label class="third"><input type="checkbox" id="thirdChk"' + (third ? " checked" : "") + '><span>Esta es mi tercera compra: 15 % de descuento</span></label>' +
       '<div class="sum"><div><span>Subtotal</span><span>' + money(t.sub) + '</span></div>' +
-      (t.ok ? '<div><span>Descuento ' + D.promo.code + '</span><span>−' + money(t.disc) + '</span></div>' : '') +
+      (t.ok ? '<div><span>Descuento 3.ª compra (' + D.promo.pct + ' %)</span><span>−' + money(t.disc) + '</span></div>' : '') +
       '<div class="tot"><span>Total</span><span>' + money(t.total) + '</span></div></div>' +
       '<div class="ship"><div class="field"><label class="sr" for="shName">Tu nombre</label><input id="shName" placeholder="Tu nombre" autocomplete="name" maxlength="60" value="' + (ship.name || "").replace(/"/g, "") + '" aria-describedby="shNameErr"><p class="field-err" id="shNameErr" role="alert"></p></div>' +
-      '<div class="field"><label class="sr" for="shZone">Zona de entrega</label><select id="shZone" aria-describedby="shZoneErr"><option value="">Zona de entrega</option><option value="Gran Santo Domingo"' + (ship.zone === "Gran Santo Domingo" ? " selected" : "") + '>Gran Santo Domingo (24–48 h)</option><option value="Interior del país"' + (ship.zone === "Interior del país" ? " selected" : "") + '>Interior del país (encomienda)</option></select><p class="field-err" id="shZoneErr" role="alert"></p></div></div>' +
+      '<div class="field"><label class="sr" for="shZone">Ciudad y sector de entrega</label><input id="shZone" placeholder="Ciudad y sector de entrega" autocomplete="address-level2" maxlength="80" value="' + (ship.zone || "").replace(/"/g, "") + '" aria-describedby="shZoneErr"><p class="field-err" id="shZoneErr" role="alert"></p></div></div>' +
       '<button class="send" type="button" id="sendWa">' + ICON("wa") + ' Enviar pedido por WhatsApp</button>' +
-      '<p class="note">Tu nombre y zona viajan en el mensaje. El costo de envío y la forma de pago se coordinan por WhatsApp; aquí no se piden datos de tarjeta.</p>';
-    $("#promoForm").onsubmit = applyCode;
+      '<p class="note">Entrega a domicilio y pago contra entrega: lo coordinamos por WhatsApp. Aquí no se piden datos de tarjeta.</p>';
+    $("#thirdChk").onchange = function () { third = this.checked; saveCart(); renderCart(); if (third) { toast("Descuento de 3.ª compra aplicado (15 %)"); burstAt($(".sum"), 14); } };
     $("#sendWa").onclick = sendOrder;
     $("#shName").oninput = function () { ship.name = this.value; saveCart(); if (this.getAttribute("aria-invalid") === "true") setErr(this, nameError(this.value)); };
-    $("#shZone").onchange = function () { ship.zone = this.value; saveCart(); if (this.value) setErr(this, ""); };
-  }
-  function applyCode(e) {
-    e.preventDefault();
-    code = $("#promoIn").value.trim(); saveCart();
-    var ok = code.toUpperCase() === D.promo.code;
-    renderCart();
-    if (ok) { burstAt($("#promoMsg"), 18); toast("¡Código aplicado! " + D.promo.pct + " % de descuento"); }
-    else if (code) shake($("#promoIn"));
-    var i = $("#promoIn"); if (i && code && !ok) i.focus();
+    $("#shZone").oninput = function () { ship.zone = this.value; saveCart(); if (this.getAttribute("aria-invalid") === "true") setErr(this, zoneError(this.value)); };
   }
   body.addEventListener("click", function (e) {
     var b = e.target.closest("button"); if (!b) return;
@@ -173,24 +162,23 @@
   function sendOrder() {
     if (!cart.length) return;
     var n = $("#shName"), z = $("#shZone");
-    var okN = setErr(n, nameError(n.value)), okZ = setErr(z, z.value ? "" : "Elige tu zona de entrega.");
+    var okN = setErr(n, nameError(n.value)), okZ = setErr(z, zoneError(z.value));
     if (!okN || !okZ) { (okN ? z : n).focus(); shake($(".ship")); return; }
     var t = totals();
     var lines = cart.map(function (l) {
       var p = byId(l.id);
-      return (p.cat === "cuidado" ? "\ud83e\uddf4 " : "\ud83d\udc5f ") + l.qty + " × *" + p.name + "* · " + sizeTxt(l).toLowerCase() + "\n      _" + money(unit(l) * l.qty) + "_";
+      return (p.cat === "cuidado" ? "\ud83e\uddf4 " : p.cat === "tecnologia" ? "\ud83d\udd0c " : "\ud83d\udc5f ") + l.qty + " × *" + p.name + "* · " + sizeTxt(l).toLowerCase() + "\n      _" + money(unit(l) * l.qty) + "_";
     });
     var txt = "\ud83d\udecd\ufe0f *NUEVO PEDIDO · Acosta Store*\n" +
       "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n" +
       "\ud83d\udc64 *Cliente:* " + n.value.trim() + "\n" +
-      "\ud83d\udccd *Entrega:* " + z.value + (z.value === "Gran Santo Domingo" ? " (24–48 h)" : " (encomienda)") + "\n\n" +
+      "\ud83d\udccd *Entrega a:* " + z.value.trim() + "\n\n" +
       "\u2728 *Mi selección*\n" + lines.join("\n") + "\n\n" +
       "\ud83e\uddfe *Resumen*\n" +
       "• Subtotal: " + money(t.sub) + "\n" +
-      (t.ok ? "\ud83c\udf9f\ufe0f Código *" + D.promo.code + "* (−" + D.promo.pct + " %): −" + money(t.disc) + "\n" : "") +
+      (t.ok ? "\ud83c\udf9f\ufe0f *Tercera compra* (−" + D.promo.pct + " %): −" + money(t.disc) + " _(por confirmar)_\n" : "") +
       "\ud83d\udcb0 *Total productos: " + money(t.total) + "*\n" +
-      (t.gift ? "\ud83c\udf81 _Incluye producto de cuidado de regalo_\n" : "") +
-      "\n\ud83d\ude9a _Envío y forma de pago: por coordinar_\n\n" +
+      "\n\ud83d\ude9a _Entrega a domicilio · Pago contra entrega_\n\n" +
       "¡Gracias por elegirnos! \ud83d\udda4\n_Estilo de pies a cabeza._";
     burstAt($("#sendWa"), 22);
     openWa(txt);
@@ -223,7 +211,8 @@
     var fill = function () {
       $("#heroName").textContent = p.name;
       $("#heroFamily").textContent = p.kind + " · " + p.gender;
-      $("#heroSize").innerHTML = p.sizes.length === 1 ? "" : '<option value="">Talla</option>' + p.sizes.map(function (z) { return "<option>" + z + "</option>"; }).join("");
+      $("#heroSize").innerHTML = p.sizes.length === 1 ? "" : '<option value="">' + p.sizeLabel + '</option>' + p.sizes.map(function (z) { return "<option>" + z + "</option>"; }).join("");
+      $("#heroSize").setAttribute("data-label", p.sizeLabel);
       $("#heroSize").hidden = p.sizes.length === 1;
       $("#heroTag").textContent = p.tagline;
       $("#heroPrice").textContent = money(p.price);
@@ -271,7 +260,7 @@
   });
   $("#heroAdd").onclick = function () {
     if (cur < 0) return; var p = P[cur], hs = $("#heroSize"), sz = p.sizes.length === 1 ? p.sizes[0] : hs.value;
-    if (!sz) { toast("Elige tu talla primero."); shake(hs); hs.focus(); return; }
+    if (!sz) { toast("Elige tu " + p.sizeLabel.toLowerCase() + " primero."); shake(hs); hs.focus(); return; }
     add(p.id, sz, this);
   };
   $("#heroDetail").onclick = function () { if (cur < 0) return; selectFicha(P[cur].id); document.getElementById("fichas").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); };
@@ -304,7 +293,7 @@
     var html = list.map(card);
     if (view.filter === "all" && view.sort === "default") {
             html.push('<article class="card is-in wide wide-2" style="--i:5"><div><h3>No sabes qué elegir</h3><p>Responde tres preguntas y te recomendamos el producto ideal para ti.</p></div><a class="btn btn-gold" href="#quiz">Encuentra tu estilo ' + ICON("arrow") + '</a></article>');
-      html.push('<article class="card is-in wide wide-3" style="--i:6"><div><h3>15 % en tu primer pedido</h3><p>Con el código BIENVENIDO15 y un producto de cuidado de regalo en compras de más de RD$ 5,000.</p></div><button class="btn btn-wine" type="button" data-copy>' + ICON("copy") + ' Copiar código</button></article>');
+      html.push('<article class="card is-in wide wide-3" style="--i:6"><div><h3>15 % en tu tercera compra</h3><p>Compra con nosotros y, en tu tercera compra, te descontamos el 15 %. Pagas al recibir.</p></div><a class="btn btn-wine" href="#contacto">Escríbenos ' + ICON("arrow") + '</a></article>');
     }
     grid.innerHTML = html.join("");
   }
@@ -329,7 +318,6 @@
     }
     else if (f) { selectFicha(f.getAttribute("data-fic")); document.getElementById("fichas").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }
     else if (e.target.closest("[data-resetfilter]")) setFilter("all");
-    else if (e.target.closest("[data-copy]")) copyCode(e.target.closest("[data-copy]"));
   });
   $$(".chip").forEach(function (c) { c.addEventListener("click", function () { setFilter(c.getAttribute("data-filter")); }); });
   $("#sort").addEventListener("change", function () { view.sort = this.value; renderGrid(); });
@@ -393,16 +381,6 @@
   });
   renderQuiz();
 
-  /* ---------- código promocional ---------- */
-  function copyCode(btn) {
-    var done = function () {
-      $("#copyHint").textContent = "¡Copiado!"; toast("Código " + D.promo.code + " copiado");
-      burstAt(btn || $("#copyCode"), 16); setTimeout(function () { $("#copyHint").textContent = "Copiar"; }, 2000);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(D.promo.code).then(done, done); else done();
-  }
-  $("#copyCode").onclick = function () { copyCode(this); };
-
   /* ---------- contacto ---------- */
   var cName = $("#cName"), cPhone = $("#cPhone"), cOk = $("#cOk"), sel = $("#cFrag");
   sel.innerHTML = '<option value="">Producto de interés</option>' + P.map(function (p) { return '<option value="' + p.name + '">' + p.name + ' · ' + p.kind + '</option>'; }).join("") + '<option value="No sé qué elegir">No sé qué elegir</option>';
@@ -426,6 +404,7 @@
     burstAt($(".coupon-submit"), 22);
   });
   $("#footTag").textContent = D.tagline;
+  $("#fIg").href = D.instagramUrl;
   $("#waFab").href = "https://wa.me/" + D.whatsapp + "?text=" + encodeURIComponent("\ud83d\udc4b ¡Hola, *Acosta Store*! Quiero una recomendación \u2728");
   $("#fWa").href = "https://wa.me/" + D.whatsapp + "?text=" + encodeURIComponent("\ud83d\udc4b ¡Hola, *Acosta Store*!");
 

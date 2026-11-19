@@ -1,58 +1,69 @@
 /* ============================================================
    ACOSTA STORE · datos de la tienda
-   Edita aquí productos, precios y contacto. Cuando llegue el Excel
-   con los productos reales, se reemplaza solo la lista "products".
-   TODOS los productos de abajo son EJEMPLOS provisionales.
-   cat: tenis | zapatos | sandalias | cuidado
+   Edita aquí productos, precios y contacto.
+   Reales (dados por la dueña): nombres, precios, WhatsApp, Instagram,
+   pago contra entrega y 15 % en la tercera compra.
+   EJEMPLO (por confirmar): tallas, descripciones, detalles y fotos.
+   cat: zapatos | sandalias | tenis | cuidado | tecnologia
    ============================================================ */
 window.ACOSTA = {
   brand: "Acosta Store",
   tagline: "Estilo de pies a cabeza.",
-  whatsapp: "18297150290",            // formato internacional, sin signos
-  whatsappDisplay: "829-715-0290",
-  city: "República Dominicana",
-  promo: { code: "BIENVENIDO15", pct: 15, giftOver: 5000 },   // EJEMPLO
+  whatsapp: "18099996514",            // formato internacional, sin signos
+  whatsappDisplay: "809-999-6514",
+  instagram: "@Acostastore05",
+  instagramUrl: "https://instagram.com/Acostastore05",
+  city: "Tienda virtual · República Dominicana",
+  promo: { pct: 15 },                 // 15 % en la tercera compra
 
   products: [
     {
-      id: "aura-court", cat: "tenis", vibe: "casual", name: "Aura Court", gender: "Unisex", kind: "Tenis urbanos",
-      price: 3400, sizes: ["38", "39", "40", "41", "42", "43", "44"],
-      image: "assets/aura-court.svg", ground: "#E4D6BC", tint: "#C4A27A",
-      tagline: "El tenis blanco que combina con todo: limpio, ligero y listo para el día a día.",
-      specs: [["Material", "Cuero sintético premium"], ["Comodidad", "Plantilla acolchada"], ["Cuidado", "Se limpia con paño húmedo"]],
-      ideal: "Uso diario, universidad y salidas casuales"
-    },
-    {
-      id: "oxford-clasico", cat: "zapatos", vibe: "elegante", name: "Oxford Clásico", gender: "Masculino", kind: "Zapatos de vestir",
-      price: 4800, sizes: ["39", "40", "41", "42", "43", "44"],
+      id: "bruno-marc", cat: "zapatos", vibe: "elegante", name: "Zapatos Bruno Marc", gender: "Masculino", kind: "Zapatos de vestir",
+      price: 2800, sizeLabel: "Talla", sizes: ["39", "40", "41", "42", "43", "44"],
       image: "assets/oxford-clasico.svg", ground: "#D9D3BB", tint: "#6B4A2C",
-      tagline: "Elegancia sobria en cuero marrón: el zapato para quien quiere verse impecable.",
-      specs: [["Material", "Cuero pulido"], ["Suela", "Goma antideslizante"], ["Cuidado", "Betún neutro y cepillo"]],
+      tagline: "Elegancia sobria para quien quiere verse impecable en cualquier ocasión.",
+      specs: [["Marca", "Bruno Marc"], ["Estilo", "Zapato de vestir"], ["Pago", "Contra entrega"]],
       ideal: "Oficina, eventos y ocasiones especiales"
     },
     {
-      id: "slide-arena", cat: "sandalias", vibe: "casual", name: "Slide Arena", gender: "Femenino", kind: "Sandalias",
-      price: 1900, sizes: ["36", "37", "38", "39", "40", "41"],
+      id: "tenis-mujer", cat: "tenis", vibe: "casual", name: "Tenis de mujer", gender: "Femenino", kind: "Tenis",
+      price: 1600, sizeLabel: "Talla", sizes: ["36", "37", "38", "39", "40", "41"],
+      image: "assets/aura-court.svg", ground: "#E4D6BC", tint: "#C4A27A",
+      tagline: "Ligeros, limpios y combinables: el tenis para el día a día.",
+      specs: [["Estilo", "Tenis casual"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
+      ideal: "Uso diario, universidad y salidas"
+    },
+    {
+      id: "sandalias-mujer", cat: "sandalias", vibe: "casual", name: "Sandalias de mujer", gender: "Femenino", kind: "Sandalias",
+      price: 1500, sizeLabel: "Talla", sizes: ["36", "37", "38", "39", "40", "41"],
       image: "assets/slide-arena.svg", ground: "#E8D2BE", tint: "#B89468",
-      tagline: "Una sandalia suave y fresca, pensada para el calor y para ir sin prisa.",
-      specs: [["Material", "Tira acolchada"], ["Suela", "Flexible y ligera"], ["Cuidado", "Lavable con agua y jabón"]],
-      ideal: "Playa, paseos y uso en casa"
+      tagline: "Frescas y cómodas, pensadas para el calor y para ir sin prisa.",
+      specs: [["Estilo", "Sandalia casual"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
+      ideal: "Paseos, playa y uso diario"
     },
     {
-      id: "crema-corporal", cat: "cuidado", vibe: "casual", name: "Crema Corporal", gender: "Unisex", kind: "Cuidado personal",
-      price: 780, sizes: ["Único"],
+      id: "eos", cat: "cuidado", vibe: "casual", name: "EOS Crema y Body Wash", gender: "Unisex", kind: "Cuidado personal",
+      price: 1150, sizeLabel: "Presentación", sizes: ["Crema", "Body wash"],
       image: "assets/crema-corporal.svg", ground: "#E5DABF", tint: "#C9B48E",
-      tagline: "Hidratación diaria con textura ligera que deja la piel suave sin sentirse grasosa.",
-      specs: [["Contenido", "250 ml"], ["Tipo de piel", "Todo tipo"], ["Uso", "Después del baño"]],
-      ideal: "Rutina diaria y regalo"
+      tagline: "Cuidado diario para la piel: elige tu crema o tu body wash EOS.",
+      specs: [["Marca", "EOS"], ["Tipo", "Crema o body wash"], ["Uso", "Rutina diaria"]],
+      ideal: "Después del baño y rutina diaria"
     },
     {
-      id: "serum-facial", cat: "cuidado", vibe: "elegante", name: "Sérum Facial", gender: "Unisex", kind: "Cuidado personal",
-      price: 1250, sizes: ["Único"],
-      image: "assets/serum-facial.svg", ground: "#DADCC4", tint: "#8A8F5E",
-      tagline: "Un sérum de absorción rápida para una piel con luz propia, mañana y noche.",
-      specs: [["Contenido", "30 ml"], ["Tipo de piel", "Todo tipo"], ["Uso", "2 a 3 gotas, mañana y noche"]],
-      ideal: "Rutina de piel y cuidado diario"
+      id: "vitaminas-mujer", cat: "cuidado", vibe: "elegante", name: "Vitaminas para mujeres", gender: "Femenino", kind: "Cuidado personal",
+      price: 1000, sizeLabel: "Talla", sizes: ["Único"],
+      image: "assets/vitaminas-mujer.svg", ground: "#EBD5CB", tint: "#C4A27A",
+      tagline: "Pastillas de vitaminas pensadas para el bienestar diario de ella.",
+      specs: [["Formato", "Pastillas"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
+      ideal: "Rutina de bienestar y cuidado diario"
+    },
+    {
+      id: "cargador", cat: "tecnologia", vibe: "casual", name: "Cargador portátil", gender: "Unisex", kind: "Accesorio tecnológico",
+      price: 1250, sizeLabel: "Talla", sizes: ["Único"],
+      image: "assets/cargador-portatil.svg", ground: "#D9D6C6", tint: "#2B2A1E",
+      tagline: "Energía extra en tu bolsillo para que tu celular nunca se quede sin batería.",
+      specs: [["Tipo", "Power bank"], ["Uso", "Celulares y accesorios"], ["Pago", "Contra entrega"]],
+      ideal: "Viajes, universidad y trabajo"
     }
   ]
 };

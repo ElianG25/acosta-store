@@ -199,3 +199,7 @@ html,body{overflow-x:clip}
   .hero-buy .btn{padding:0 14px;font-size:15px}
   .hero-buy .size-sel{min-width:84px}
 }
+
+.third{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--ground);margin-bottom:12px;font-weight:500;cursor:pointer}
+.third input{width:22px;height:22px;accent-color:var(--wine);flex:none}
+.third span{line-height:1.3}
