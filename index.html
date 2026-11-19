@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pérez Perfum · Perfumería árabe de lujo en Santo Domingo</title>
-<meta name="description" content="Siete Eau de Parfum de 100 ml de inspiración árabe y oriental, decants de 10 ml para probar y entrega en 24–48 h en el Gran Santo Domingo.">
-<meta name="theme-color" content="#241019">
-<meta property="og:title" content="Pérez Perfum · Perfumería árabe de lujo">
-<meta property="og:description" content="Una esencia que habla por ti. Siete Eau de Parfum de 100 ml, decants de 10 ml y asesoría por WhatsApp.">
+<title>Acosta Store · Tenis, zapatos, sandalias y cuidado personal</title>
+<meta name="description" content="Acosta Store: tenis, zapatos, sandalias y productos de cuidado personal. Elige tu talla y haz tu pedido por WhatsApp.">
+<meta name="theme-color" content="#F3EADB">
+<meta property="og:title" content="Acosta Store · Estilo de pies a cabeza">
+<meta property="og:description" content="Tenis, zapatos, sandalias y cuidado personal. Pide por WhatsApp.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/zafir.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%233A1223'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23C9A24F'%3EP%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="assets/logo-full.png">
+<link rel="icon" href="assets/logo-mark.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
-<link rel="stylesheet" href="extras.css?v=10">
+<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="extras.css?v=13">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -38,6 +38,7 @@
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></symbol>
   <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12"/><path d="M12 8c-1.2-3.5-5-3.5-4.2-1.2C8.3 8 12 8 12 8zM12 8c1.2-3.5 5-3.5 4.2-1.2C15.7 8 12 8 12 8z"/></symbol>
+  <symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 16v-5c0-1 1-1.600 2-1.400l3 .6c1.200-1.800 3.400-2.200 5-1l3 2.300c2.500.6 4 2 4 3.500v1H3z"/><path d="M3 19h18"/></symbol>
   <symbol id="i-bottle" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="3" rx=".6"/><path d="M10.5 6v2M13.5 6v2"/><rect x="6" y="8" width="12" height="13" rx="3"/><path d="M9 14h6"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
 </svg>
@@ -46,11 +47,11 @@
 <a class="skip" href="#coleccion">Saltar al contenido</a>
 
 <header class="nav" id="nav">
-  <a class="wordmark" href="#inicio" aria-label="Pérez Perfum, inicio">Pérez Perfum</a>
+  <a class="wordmark" href="#inicio" aria-label="Acosta Store, inicio"><img src="assets/logo-mark.png" alt="" width="30" height="35"><span>Acosta <small>Store</small></span></a>
   <nav class="nav-links" id="navLinks" aria-label="Principal">
     <a href="#coleccion">Colección</a>
-    <a href="#fichas">Fichas</a>
-    <a href="#quiz">Tu aroma</a>
+    <a href="#fichas">Detalles</a>
+    <a href="#quiz">Tu estilo</a>
     <a href="#faq">Preguntas</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -68,8 +69,8 @@
 <section class="hero" id="hero" aria-labelledby="h1">
   <div class="hero-top">
     <div class="hero-copy">
-      <h1 id="h1">Perfumería árabe de lujo</h1>
-      <p class="lead" data-reveal style="--d:1">Siete Eau de Parfum de 100 ml de inspiración árabe y oriental, con notas completas, decants de 10 ml para probar y entrega en 24–48 h en Santo Domingo.</p>
+      <h1 id="h1">Camina con estilo</h1>
+      <p class="lead" data-reveal style="--d:1">Tenis, zapatos, sandalias y productos de cuidado personal, elegidos con cuidado. Escoge tu talla y haz tu pedido por WhatsApp.</p>
       <a class="btn btn-gold" href="#coleccion" data-reveal style="--d:2">Ver la colección <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="hero-pick" aria-live="polite">
@@ -78,14 +79,16 @@
       <p class="hero-tag" id="heroTag"></p>
       <p class="hero-price" id="heroPrice"></p>
       <div class="hero-buy">
-        <button class="btn btn-gold" id="heroAdd" type="button"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg> Añadir 100 ml</button>
-        <button class="btn btn-ghost" id="heroDetail" type="button">Ver ficha</button>
+        <label class="sr" for="heroSize">Talla</label>
+        <select class="size-sel" id="heroSize"></select>
+        <button class="btn btn-wine" id="heroAdd" type="button"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg> Añadir</button>
+        <button class="btn btn-ghost" id="heroDetail" type="button">Ver detalle</button>
       </div>
     </div>
   </div>
 
   <div class="arc-wrap">
-    <div class="arc" id="arc" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Fragancias. Desliza o usa las flechas del teclado"></div>
+    <div class="arc" id="arc" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Productos. Desliza o usa las flechas del teclado"></div>
   </div>
 
   <a class="badge" href="#oferta" aria-label="15 % de descuento con el código BIENVENIDO15">
@@ -95,21 +98,21 @@
 </section>
 
 <!-- ================= MARQUESINA ================= -->
-<div class="marquee" aria-label="Ventajas de comprar en Pérez Perfum">
+<div class="marquee" aria-label="Ventajas de comprar en Acosta Store">
   <div class="marquee-track">
     <ul>
-      <li><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg>Entrega en 24–48 h</li>
-      <li><svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg>Decants de 10 ml</li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-shoe"/></svg>Tenis, zapatos y sandalias</li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg>Cuidado personal</li>
       <li><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg>15 % con BIENVENIDO15</li>
-      <li><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Asesoría por WhatsApp</li>
-      <li><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Nunca falsificaciones</li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedidos por WhatsApp</li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg>Envíos a todo el país</li>
     </ul>
     <ul aria-hidden="true">
-      <li><svg class="ic"><use href="#i-truck"/></svg>Entrega en 24–48 h</li>
-      <li><svg class="ic"><use href="#i-drop"/></svg>Decants de 10 ml</li>
+      <li><svg class="ic"><use href="#i-shoe"/></svg>Tenis, zapatos y sandalias</li>
+      <li><svg class="ic"><use href="#i-drop"/></svg>Cuidado personal</li>
       <li><svg class="ic"><use href="#i-gift"/></svg>15 % con BIENVENIDO15</li>
-      <li><svg class="ic"><use href="#i-wa"/></svg>Asesoría por WhatsApp</li>
-      <li><svg class="ic"><use href="#i-shield"/></svg>Nunca falsificaciones</li>
+      <li><svg class="ic"><use href="#i-wa"/></svg>Pedidos por WhatsApp</li>
+      <li><svg class="ic"><use href="#i-truck"/></svg>Envíos a todo el país</li>
     </ul>
   </div>
 </div>
@@ -118,13 +121,14 @@
 <section class="sec catalog" id="coleccion" aria-labelledby="h-col">
   <div class="sec-head">
     <h2 id="h-col" data-reveal>La colección</h2>
-    <p class="sec-sub" data-reveal style="--d:1">Siete fragancias propias en 100 ml. Elige por familia olfativa, por ocasión o por quién la va a usar.</p>
+    <p class="sec-sub" data-reveal style="--d:1">Calzado y cuidado personal en un solo lugar. Filtra por categoría, elige tu talla y añádelo a tu pedido.</p>
     <div class="filters-bar" data-reveal style="--d:2">
-      <div class="filters" role="group" aria-label="Filtrar por tipo">
-        <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">Todas</button>
-        <button type="button" class="chip" data-filter="Masculino" aria-pressed="false">Masculino</button>
-        <button type="button" class="chip" data-filter="Femenino" aria-pressed="false">Femenino</button>
-        <button type="button" class="chip" data-filter="Unisex" aria-pressed="false">Unisex</button>
+      <div class="filters" role="group" aria-label="Filtrar por categoría">
+        <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">Todo</button>
+        <button type="button" class="chip" data-filter="tenis" aria-pressed="false">Tenis</button>
+        <button type="button" class="chip" data-filter="zapatos" aria-pressed="false">Zapatos</button>
+        <button type="button" class="chip" data-filter="sandalias" aria-pressed="false">Sandalias</button>
+        <button type="button" class="chip" data-filter="cuidado" aria-pressed="false">Cuidado personal</button>
         <button type="button" class="chip chip-fav" data-filter="fav" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Favoritos <span id="favCount">0</span></button>
       </div>
       <div class="sort">
@@ -142,16 +146,16 @@
   <noscript><p>Activa JavaScript para ver el catálogo, o escríbenos por WhatsApp al 829-715-0290.</p></noscript>
 </section>
 
-<!-- ================= FICHAS OLFATIVAS ================= -->
+<!-- ================= DETALLES ================= -->
 <section class="sec fichas" id="fichas" aria-labelledby="h-fic">
   <div class="fichas-grid">
     <div class="fichas-list">
-      <h2 id="h-fic" class="fichas-title" data-reveal>Fichas olfativas</h2>
-      <div class="names" id="ficNames" role="group" aria-label="Elegir fragancia"></div>
+      <h2 id="h-fic" class="fichas-title" data-reveal>Detalle de cada producto</h2>
+      <div class="names" id="ficNames" role="group" aria-label="Elegir producto"></div>
     </div>
     <div class="fichas-stage" data-reveal style="--d:1">
       <div class="disc" id="disc"></div>
-      <div class="arch"><img id="ficImg" src="assets/ameer.png" alt="" width="360" height="480"></div>
+      <div class="arch"><img id="ficImg" src="assets/aura-court.svg" alt="" width="360" height="480"></div>
     </div>
     <div class="ficha" id="ficha" aria-live="polite"></div>
   </div>
@@ -161,9 +165,18 @@
 <section class="sec quiz" id="quiz" aria-labelledby="h-quiz">
   <div class="quiz-grid">
     <div class="quiz-form">
-      <h2 id="h-quiz" data-reveal>Encuentra tu aroma</h2>
-      <p class="sec-sub" style="margin:0" data-reveal>Tres toques y te decimos cuál va contigo.</p>
+      <h2 id="h-quiz" data-reveal>Encuentra tu estilo</h2>
+      <p class="sec-sub" style="margin:0" data-reveal>Tres toques y te recomendamos qué llevar.</p>
       <fieldset data-reveal style="--d:1">
+        <legend>¿Qué buscas?</legend>
+        <div class="opts" data-q="cat">
+          <button type="button" class="opt" data-v="tenis" aria-pressed="false">Tenis</button>
+          <button type="button" class="opt" data-v="zapatos" aria-pressed="false">Zapatos</button>
+          <button type="button" class="opt" data-v="sandalias" aria-pressed="false">Sandalias</button>
+          <button type="button" class="opt" data-v="cuidado" aria-pressed="false">Cuidado personal</button>
+        </div>
+      </fieldset>
+      <fieldset data-reveal style="--d:2">
         <legend>¿Para quién es?</legend>
         <div class="opts" data-q="who">
           <button type="button" class="opt" data-v="Masculino" aria-pressed="false">Para él</button>
@@ -171,19 +184,11 @@
           <button type="button" class="opt" data-v="any" aria-pressed="false">Para cualquiera</button>
         </div>
       </fieldset>
-      <fieldset data-reveal style="--d:2">
-        <legend>¿Qué vibra buscas?</legend>
-        <div class="opts" data-q="vibe">
-          <button type="button" class="opt" data-v="fresca" aria-pressed="false">Fresca</button>
-          <button type="button" class="opt" data-v="dulce" aria-pressed="false">Dulce</button>
-          <button type="button" class="opt" data-v="intensa" aria-pressed="false">Intensa</button>
-        </div>
-      </fieldset>
       <fieldset data-reveal style="--d:3">
-        <legend>¿Cuándo lo usarás?</legend>
-        <div class="opts" data-q="moment">
-          <button type="button" class="opt" data-v="dia" aria-pressed="false">Día a día</button>
-          <button type="button" class="opt" data-v="noche" aria-pressed="false">Noche y eventos</button>
+        <legend>¿Qué estilo prefieres?</legend>
+        <div class="opts" data-q="vibe">
+          <button type="button" class="opt" data-v="casual" aria-pressed="false">Casual</button>
+          <button type="button" class="opt" data-v="elegante" aria-pressed="false">Elegante</button>
         </div>
       </fieldset>
       <button type="button" class="link-btn" id="quizReset">Empezar de nuevo</button>
@@ -195,24 +200,24 @@
 <!-- ================= NOSOTROS ================= -->
 <section class="sec why" id="nosotros" aria-labelledby="h-why">
   <div class="why-head">
-    <h2 id="h-why" data-reveal>Por qué Pérez Perfum</h2>
-    <p class="sec-sub" data-reveal style="--d:1">Una tienda 100 % en línea hecha para elegir con confianza: nunca falsificaciones, siempre con asesoría de una persona real.</p>
+    <h2 id="h-why" data-reveal>Por qué Acosta Store</h2>
+    <p class="sec-sub" data-reveal style="--d:1">Una tienda en línea pensada para elegir con calma y pedir fácil, con atención de una persona real por WhatsApp.</p>
   </div>
   <div class="why-grid">
     <article class="why-tile t-wine" data-reveal>
-      <p class="fig"><span data-count="7">7</span></p>
-      <h3>Colección propia</h3>
-      <p>Fragancias árabes y orientales difíciles de hallar en las perfumerías dominicanas, todas en 100 ml.</p>
+      <p class="fig"><span data-count="4">4</span></p>
+      <h3>Categorías en un lugar</h3>
+      <p>Tenis, zapatos, sandalias y cuidado personal. Todo lo que necesitas, de pies a cabeza.</p>
     </article>
     <article class="why-tile t-gold" data-reveal style="--d:1">
-      <p class="fig"><span data-count="10">10</span> ml</p>
-      <h3>Prueba antes de comprar</h3>
-      <p>Decants de 10 ml para vivir el aroma en tu piel antes de decidirte por el frasco completo.</p>
+      <p class="fig">Tu talla</p>
+      <h3>Eliges antes de pedir</h3>
+      <p>Cada producto muestra sus tallas disponibles para que tu pedido salga bien a la primera.</p>
     </article>
     <article class="why-tile t-sand" data-reveal style="--d:2">
       <p class="fig">1 a 1</p>
       <h3>Asesoría por WhatsApp</h3>
-      <p>Una persona te recomienda según la ocasión, el clima y tu presupuesto. Sin presión.</p>
+      <p>Te orientamos con la talla, el estilo y el presupuesto. Sin presión.</p>
     </article>
     <article class="why-tile t-deep" data-reveal style="--d:3">
       <p class="fig">24–48 h</p>
@@ -227,7 +232,7 @@
   <div class="promo-inner">
     <h2 id="h-promo" data-reveal>15 % en tu primer pedido</h2>
     <div class="promo-side" data-reveal style="--d:1">
-      <p>Usa el código en tu pedido y, en compras de más de RD$ 3,000, te regalamos una miniatura.</p>
+      <p>Usa el código en tu pedido y, en compras de más de RD$ 5,000, te regalamos un producto de cuidado personal.</p>
       <button class="code" id="copyCode" type="button" aria-label="Copiar el código BIENVENIDO15">
         <span class="code-text">BIENVENIDO15</span>
         <span class="code-hint"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg><span id="copyHint">Copiar</span></span>
@@ -240,9 +245,9 @@
 <section class="sec steps" id="como" aria-labelledby="h-steps">
   <h2 id="h-steps" data-reveal>Pedir es simple</h2>
   <ol class="steps-list">
-    <li data-reveal><h3>Elige tu fragancia</h3><p>Compara notas, familia y ocasión. Añade el frasco de 100 ml o un decant de 10 ml.</p></li>
+    <li data-reveal><h3>Elige tu producto</h3><p>Escoge la talla y añádelo a tu pedido. Puedes combinar calzado y cuidado personal.</p></li>
     <li data-reveal style="--d:1"><h3>Confirma por WhatsApp</h3><p>Tu pedido llega ya armado a nuestro chat. Coordinamos pago y entrega contigo.</p></li>
-    <li data-reveal style="--d:2"><h3>Recíbelo en 24–48 h</h3><p>Entrega en el Gran Santo Domingo, con el mismo estándar en cada pedido.</p></li>
+    <li data-reveal style="--d:2"><h3>Recíbelo en casa</h3><p>Entrega en 24–48 h en el Gran Santo Domingo y por encomienda al interior.</p></li>
   </ol>
 </section>
 
@@ -251,15 +256,15 @@
   <div class="faq-head">
     <h2 id="h-faq" data-reveal>Preguntas frecuentes</h2>
     <p class="sec-sub" data-reveal style="--d:1">Si no encuentras tu respuesta, escríbenos y te contestamos el mismo día.</p>
-    <a class="btn btn-wine" href="#contacto" data-reveal style="--d:2">Escribir a Pérez Perfum <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="btn btn-wine" href="#contacto" data-reveal style="--d:2">Escribir a Acosta Store <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
   <div class="faq-list" data-reveal style="--d:1">
-    <details><summary>¿Los perfumes son originales?</summary><p>Sí. Son fragancias de nuestra colección propia y nunca vendemos falsificaciones. Cada frasco es Eau de Parfum de 100 ml.</p></details>
-    <details><summary>¿Qué es un decant de 10 ml?</summary><p>Es una muestra en formato de 10 ml del mismo perfume. Sirve para probarlo varios días en tu piel antes de comprar el frasco completo.</p></details>
+    <details><summary>¿Cómo sé cuál es mi talla?</summary><p>Cada producto muestra sus tallas disponibles. Si tienes dudas, escríbenos por WhatsApp con la medida de tu pie en centímetros y te orientamos.</p></details>
+    <details><summary>¿Qué productos venden?</summary><p>Tenis, zapatos, sandalias y productos de cuidado personal. Puedes combinarlos en un mismo pedido.</p></details>
     <details><summary>¿Cuánto tarda la entrega?</summary><p>De 24 a 48 horas en el Gran Santo Domingo. Para el resto del país enviamos por encomienda y te confirmamos el tiempo por WhatsApp.</p></details>
     <details><summary>¿Cómo pago mi pedido?</summary><p>Al enviar tu pedido por WhatsApp coordinamos contigo la forma de pago y la entrega. No se te pide ningún dato de tarjeta en esta página.</p></details>
-    <details><summary>No sé cuál elegir, ¿me ayudan?</summary><p>Claro. Haz el test de “Tu aroma” o cuéntanos la ocasión, el clima y tu presupuesto, y una asesora o asesor te recomienda por WhatsApp.</p></details>
-    <details><summary>¿Cómo uso el código de descuento?</summary><p>Escribe BIENVENIDO15 en el campo de código de tu pedido y se descuenta el 15 %. En compras de más de RD$ 3,000 incluimos una miniatura de regalo.</p></details>
+    <details><summary>No sé qué elegir, ¿me ayudan?</summary><p>Claro. Haz el test de “Tu estilo” o cuéntanos la ocasión y tu presupuesto, y una persona de nuestro equipo te recomienda por WhatsApp.</p></details>
+    <details><summary>¿Cómo uso el código de descuento?</summary><p>Escribe BIENVENIDO15 en el campo de código de tu pedido y se descuenta el 15 %. En compras de más de RD$ 5,000 incluimos un producto de cuidado personal de regalo.</p></details>
   </div>
 </section>
 
@@ -267,7 +272,7 @@
 <section class="sec contact" id="contacto" aria-labelledby="h-con">
   <form class="coupon" id="contactForm" novalidate>
     <div class="coupon-l">
-      <h2 id="h-con">Cuéntanos qué aroma buscas</h2>
+      <h2 id="h-con">Cuéntanos qué estás buscando</h2>
       <p>Te respondemos por WhatsApp con una recomendación a tu medida.</p>
     </div>
     <div class="coupon-r">
@@ -282,12 +287,12 @@
         <p class="field-err" id="cPhoneErr" role="alert"></p>
       </div>
       <div class="field">
-        <label class="sr" for="cFrag">Fragancia de interés</label>
+        <label class="sr" for="cFrag">Producto de interés</label>
         <select id="cFrag" name="frag"></select>
       </div>
       <div class="field">
         <label class="sr" for="cMsg">Mensaje</label>
-        <input id="cMsg" name="msg" type="text" placeholder="Ocasión, clima o presupuesto (opcional)" maxlength="160">
+        <input id="cMsg" name="msg" type="text" placeholder="Talla, ocasión o presupuesto (opcional)" maxlength="160">
       </div>
       <button class="coupon-submit" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg> Escribir por WhatsApp</button>
       <p class="coupon-ok" id="cOk" role="status"></p>
@@ -302,24 +307,21 @@
   <div class="postcard">
     <div class="postcard-l">
       <p class="sign">Gracias por visitarnos</p>
-      <p>Somos una tienda en línea de perfumería árabe y oriental. Cada pedido se prepara con cuidado y lo acompañamos de principio a fin.</p>
+      <p>Somos una tienda en línea de calzado y cuidado personal. Cada pedido se prepara con cuidado y lo acompañamos de principio a fin.</p>
       <p class="tagline" id="footTag"></p>
     </div>
     <address class="postcard-r">
-      <a href="https://wa.me/18297150290?text=Hola%20P%C3%A9rez%20Perfum" id="fWa" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp: 829-715-0290</a>
-      <a href="mailto:perezperfum@gmail.com" id="fMail"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>perezperfum@gmail.com</a>
-      <a href="https://instagram.com/perezperfum" id="fIg" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg>Instagram: @perezperfum</a>
-      <a href="https://www.tiktok.com/@perezperfum" id="fTt" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-tt"/></svg>TikTok: @perezperfum</a>
-      <span><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Santo Domingo, República Dominicana</span>
+      <a href="https://wa.me/18297150290?text=Hola%20Acosta%20Store" id="fWa" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp: 829-715-0290</a>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>República Dominicana</span>
     </address>
-    <div class="stamp"><img src="assets/zafir.png" alt="" width="88" height="117" loading="lazy"></div>
-    <p class="imprint">© 2026 Pérez Perfum · Luxury Fragrances Collection</p>
+    <div class="stamp"><img src="assets/logo-mark.png" alt="" width="88" height="103" loading="lazy"></div>
+    <p class="imprint">© 2026 Acosta Store</p>
   </div>
-  <p class="foot-big" aria-hidden="true">Pérez Perfum</p>
+  <img class="foot-logo" src="assets/logo-full-cream.png" alt="Acosta Store" width="555" height="580" loading="lazy">
 </footer>
 
 <!-- botón flotante de WhatsApp -->
-<a class="wa-fab" id="waFab" href="https://wa.me/18297150290?text=Hola%20P%C3%A9rez%20Perfum%2C%20quiero%20una%20recomendaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="wa-fab" id="waFab" href="https://wa.me/18297150290?text=Hola%20Acosta%20Store" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
   <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 <button class="to-top" id="toTop" type="button" aria-label="Volver arriba"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
@@ -336,7 +338,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="data/products.js?v=10"></script>
-<script src="app.js?v=10"></script>
+<script src="data/products.js?v=13"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

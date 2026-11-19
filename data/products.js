@@ -1,77 +1,58 @@
 /* ============================================================
-   PÉREZ PERFUM · datos de la tienda
-   Edita aquí productos, precios y contacto. (Cuando esté el Excel
-   con los productos reales, se reemplaza solo este archivo.)
-   Los campos marcados "EJEMPLO" son provisionales.
+   ACOSTA STORE · datos de la tienda
+   Edita aquí productos, precios y contacto. Cuando llegue el Excel
+   con los productos reales, se reemplaza solo la lista "products".
+   TODOS los productos de abajo son EJEMPLOS provisionales.
+   cat: tenis | zapatos | sandalias | cuidado
    ============================================================ */
-window.PEREZ = {
-  brand: "Pérez Perfum",
-  tagline: "Una esencia que habla por ti.",
+window.ACOSTA = {
+  brand: "Acosta Store",
+  tagline: "Estilo de pies a cabeza.",
   whatsapp: "18297150290",            // formato internacional, sin signos
   whatsappDisplay: "829-715-0290",
-  email: "perezperfum@gmail.com",
-  social: "@perezperfum",
-  instagramUrl: "https://instagram.com/perezperfum",
-  tiktokUrl: "https://www.tiktok.com/@perezperfum",
-  city: "Santo Domingo, República Dominicana",
-  promo: { code: "BIENVENIDO15", pct: 15, giftOver: 3000 },
+  city: "República Dominicana",
+  promo: { code: "BIENVENIDO15", pct: 15, giftOver: 5000 },   // EJEMPLO
 
   products: [
     {
-      id: "ameer", vibe: "dulce", moment: "noche", name: "Ameer", gender: "Masculino", family: "Ámbar especiado",
-      price: 3200, decant: 550,                       // decant: EJEMPLO
-      image: "assets/ameer.png", ground: "#3d2111", tint: "#c9a24f",
-      tagline: "Cálido y envolvente: el perfume que se queda en la memoria de la noche.",
-      notes: { top: "Bergamota, cardamomo", heart: "Ámbar, canela", base: "Vainilla, sándalo" },  // EJEMPLO
-      ideal: "Noches, cenas y clima fresco"                                                         // EJEMPLO
+      id: "aura-court", cat: "tenis", vibe: "casual", name: "Aura Court", gender: "Unisex", kind: "Tenis urbanos",
+      price: 3400, sizes: ["38", "39", "40", "41", "42", "43", "44"],
+      image: "assets/aura-court.svg", ground: "#E4D6BC", tint: "#C4A27A",
+      tagline: "El tenis blanco que combina con todo: limpio, ligero y listo para el día a día.",
+      specs: [["Material", "Cuero sintético premium"], ["Comodidad", "Plantilla acolchada"], ["Cuidado", "Se limpia con paño húmedo"]],
+      ideal: "Uso diario, universidad y salidas casuales"
     },
     {
-      id: "noura", vibe: "dulce", moment: "dia", name: "Noura", gender: "Femenino", family: "Floral luminoso",
-      price: 3100, decant: 520,
-      image: "assets/noura.png", ground: "#4a1d33", tint: "#e7a6bb",
-      tagline: "Una rosa suave y luminosa que te acompaña de la mañana a la tarde.",
-      notes: { top: "Pera, bergamota rosa", heart: "Rosa de Taif, peonía", base: "Almizcle blanco, vainilla" },
-      ideal: "Día a día, oficina y brunch"
+      id: "oxford-clasico", cat: "zapatos", vibe: "elegante", name: "Oxford Clásico", gender: "Masculino", kind: "Zapatos de vestir",
+      price: 4800, sizes: ["39", "40", "41", "42", "43", "44"],
+      image: "assets/oxford-clasico.svg", ground: "#D9D3BB", tint: "#6B4A2C",
+      tagline: "Elegancia sobria en cuero marrón: el zapato para quien quiere verse impecable.",
+      specs: [["Material", "Cuero pulido"], ["Suela", "Goma antideslizante"], ["Cuidado", "Betún neutro y cepillo"]],
+      ideal: "Oficina, eventos y ocasiones especiales"
     },
     {
-      id: "zafir", vibe: "intensa", moment: "noche", name: "Zafir", gender: "Masculino", family: "Oud y cuero",
-      price: 3600, decant: 620,
-      image: "assets/zafir.png", ground: "#241019", tint: "#5a3a22",
-      tagline: "Intenso y elegante, con la profundidad del oud para quien quiere dejar huella.",
-      notes: { top: "Pimienta negra, azafrán", heart: "Oud, cuero", base: "Ámbar gris, pachulí" },
-      ideal: "Eventos y ocasiones especiales"
+      id: "slide-arena", cat: "sandalias", vibe: "casual", name: "Slide Arena", gender: "Femenino", kind: "Sandalias",
+      price: 1900, sizes: ["36", "37", "38", "39", "40", "41"],
+      image: "assets/slide-arena.svg", ground: "#E8D2BE", tint: "#B89468",
+      tagline: "Una sandalia suave y fresca, pensada para el calor y para ir sin prisa.",
+      specs: [["Material", "Tira acolchada"], ["Suela", "Flexible y ligera"], ["Cuidado", "Lavable con agua y jabón"]],
+      ideal: "Playa, paseos y uso en casa"
     },
     {
-      id: "layal", vibe: "dulce", moment: "noche", name: "Layal", gender: "Femenino", family: "Floral frutal",
-      price: 3300, decant: 560,
-      image: "assets/layal.png", ground: "#4d0f26", tint: "#c2305a",
-      tagline: "Frutos rojos y flores nocturnas: seductor, dulce y con carácter.",
-      notes: { top: "Frambuesa, litchi", heart: "Rosa, jazmín", base: "Oud suave, haba tonka" },
-      ideal: "Salidas nocturnas y citas"
+      id: "crema-corporal", cat: "cuidado", vibe: "casual", name: "Crema Corporal", gender: "Unisex", kind: "Cuidado personal",
+      price: 780, sizes: ["Único"],
+      image: "assets/crema-corporal.svg", ground: "#E5DABF", tint: "#C9B48E",
+      tagline: "Hidratación diaria con textura ligera que deja la piel suave sin sentirse grasosa.",
+      specs: [["Contenido", "250 ml"], ["Tipo de piel", "Todo tipo"], ["Uso", "Después del baño"]],
+      ideal: "Rutina diaria y regalo"
     },
     {
-      id: "rayan", vibe: "fresca", moment: "dia", name: "Rayan", gender: "Unisex", family: "Verde fresco",
-      price: 2900, decant: 490,
-      image: "assets/rayan.png", ground: "#1f3a30", tint: "#6bb28b",
-      tagline: "Fresco y limpio, pensado para el calor del Caribe y para compartir.",
-      notes: { top: "Menta, limón", heart: "Té verde, hoja de higuera", base: "Musgo, cedro" },
-      ideal: "Calor, playa y uso diario"
-    },
-    {
-      id: "sahar", vibe: "intensa", moment: "noche", name: "Sahar", gender: "Unisex", family: "Incienso y lavanda",
-      price: 3400, decant: 580,
-      image: "assets/sahar.png", ground: "#2e1a4a", tint: "#7a52c2",
-      tagline: "Misterioso y sereno: incienso suave sobre un fondo cremoso de benjuí.",
-      notes: { top: "Lavanda, ciruela", heart: "Iris, incienso", base: "Benjuí, almizcle" },
-      ideal: "Noches tranquilas y regalos"
-    },
-    {
-      id: "malik", vibe: "fresca", moment: "dia", name: "Malik", gender: "Masculino", family: "Aromático acuático",
-      price: 3500, decant: 600,
-      image: "assets/malik.png", ground: "#14304a", tint: "#3f7fb0",
-      tagline: "Limpio y seguro de sí mismo: frescura marina con una base de madera.",
-      notes: { top: "Notas acuáticas, bergamota", heart: "Salvia, geranio", base: "Vetiver, cedro, ámbar" },
-      ideal: "Trabajo, deporte y todos los días"
+      id: "serum-facial", cat: "cuidado", vibe: "elegante", name: "Sérum Facial", gender: "Unisex", kind: "Cuidado personal",
+      price: 1250, sizes: ["Único"],
+      image: "assets/serum-facial.svg", ground: "#DADCC4", tint: "#8A8F5E",
+      tagline: "Un sérum de absorción rápida para una piel con luz propia, mañana y noche.",
+      specs: [["Contenido", "30 ml"], ["Tipo de piel", "Todo tipo"], ["Uso", "2 a 3 gotas, mañana y noche"]],
+      ideal: "Rutina de piel y cuidado diario"
     }
   ]
 };
