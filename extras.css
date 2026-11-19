@@ -211,3 +211,7 @@ html,body{overflow-x:clip}
 .thumbs button[aria-pressed="true"]{border-color:var(--ink)}
 .thumbs img{width:100%;height:100%;object-fit:cover}
 .card-img img,.arc-item img{aspect-ratio:5/6}
+
+/* fotos con fondo recortado: base cálida uniforme */
+.card-img{background:linear-gradient(180deg,#EFE4D1,var(--paper))}
+.arch{background:linear-gradient(180deg,#EFE4D1,var(--paper))}
