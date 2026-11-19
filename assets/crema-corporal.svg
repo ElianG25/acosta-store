@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" width="360" height="480"><rect width="360" height="480" fill="#E5DABF"/><circle cx="180" cy="275" r="140" fill="#D8CBA8"/>
-<ellipse cx="180" cy="372" rx="100" ry="11" fill="#2B2A1E" opacity=".18"/>
-<rect x="90" y="236" width="180" height="132" rx="20" fill="#F6EEDF"/>
-<rect x="84" y="200" width="192" height="46" rx="12" fill="#2B2A1E"/>
-<path d="M92 214h176" stroke="#4a4a36" stroke-width="3"/>
-<path d="M180 262c-18 14-18 34 0 44 18-10 18-30 0-44z" fill="none" stroke="#2B2A1E" stroke-width="2.5"/>
-<text x="180" y="336" text-anchor="middle" font-family="Georgia,serif" font-size="22" letter-spacing="5" fill="#2B2A1E">ACOSTA</text>
-<text x="180" y="356" text-anchor="middle" font-family="Georgia,serif" font-size="10" letter-spacing="4" fill="#6b6a52">CREMA CORPORAL</text></svg>

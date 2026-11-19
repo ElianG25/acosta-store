@@ -203,3 +203,11 @@ html,body{overflow-x:clip}
 .third{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--ground);margin-bottom:12px;font-weight:500;cursor:pointer}
 .third input{width:22px;height:22px;accent-color:var(--wine);flex:none}
 .third span{line-height:1.3}
+
+/* fotos reales */
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.thumbs button{width:56px;height:56px;padding:0;border:2px solid transparent;background:var(--ground);overflow:hidden;transition:border-color .25s,transform .25s var(--ease)}
+.thumbs button:hover{transform:translateY(-2px)}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.card-img img,.arc-item img{aspect-ratio:5/6}

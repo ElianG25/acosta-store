@@ -3,7 +3,7 @@
    Edita aquí productos, precios y contacto.
    Reales (dados por la dueña): nombres, precios, WhatsApp, Instagram,
    pago contra entrega y 15 % en la tercera compra.
-   EJEMPLO (por confirmar): tallas, descripciones, detalles y fotos.
+   Fotos: reales (enviadas por la dueña). EJEMPLO (por confirmar): tallas.
    cat: zapatos | sandalias | tenis | cuidado | tecnologia
    ============================================================ */
 window.ACOSTA = {
@@ -18,51 +18,51 @@ window.ACOSTA = {
 
   products: [
     {
-      id: "bruno-marc", cat: "zapatos", vibe: "elegante", name: "Zapatos Bruno Marc", gender: "Masculino", kind: "Zapatos de vestir",
+      id: "bruno-marc", cat: "zapatos", vibe: "elegante", name: "Zapatos Bruno Marc", gender: "Masculino", kind: "Zapatos casuales de vestir",
       price: 2800, sizeLabel: "Talla", sizes: ["39", "40", "41", "42", "43", "44"],
-      image: "assets/oxford-clasico.svg", ground: "#D9D3BB", tint: "#6B4A2C",
-      tagline: "Elegancia sobria para quien quiere verse impecable en cualquier ocasión.",
-      specs: [["Marca", "Bruno Marc"], ["Estilo", "Zapato de vestir"], ["Pago", "Contra entrega"]],
-      ideal: "Oficina, eventos y ocasiones especiales"
+      image: "assets/photos/bruno-1.jpg", images: ["assets/photos/bruno-1.jpg", "assets/photos/bruno-2.jpg", "assets/photos/bruno-3.jpg", "assets/photos/bruno-4.jpg", "assets/photos/bruno-5.jpg", "assets/photos/bruno-6.jpg"], ground: "#E2DED6", tint: "#C4A27A",
+      tagline: "Zapatos Bruno Marc con diseño elegante y suela cómoda: para verte bien sin renunciar a la comodidad.",
+      specs: [["Marca", "Bruno Marc"], ["Estilo", "Casual de vestir"], ["Colores", "Marrón, azul marino y negro"]],
+      ideal: "Oficina, eventos y uso diario"
     },
     {
-      id: "tenis-mujer", cat: "tenis", vibe: "casual", name: "Tenis de mujer", gender: "Femenino", kind: "Tenis",
+      id: "tenis-mujer", cat: "tenis", vibe: "casual", name: "Tenis de mujer", gender: "Femenino", kind: "Tenis casuales",
       price: 1600, sizeLabel: "Talla", sizes: ["36", "37", "38", "39", "40", "41"],
-      image: "assets/aura-court.svg", ground: "#E4D6BC", tint: "#C4A27A",
-      tagline: "Ligeros, limpios y combinables: el tenis para el día a día.",
-      specs: [["Estilo", "Tenis casual"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
+      image: "assets/photos/tenis-1.jpg", images: ["assets/photos/tenis-1.jpg"], ground: "#E6E1DA", tint: "#C4A27A",
+      tagline: "Tenis blancos y limpios con detalle metálico, fáciles de combinar con todo.",
+      specs: [["Estilo", "Tenis casual blanco"], ["Detalle", "Metálico rosa, plata o dorado"], ["Para", "Mujer"]],
       ideal: "Uso diario, universidad y salidas"
     },
     {
       id: "sandalias-mujer", cat: "sandalias", vibe: "casual", name: "Sandalias de mujer", gender: "Femenino", kind: "Sandalias",
       price: 1500, sizeLabel: "Talla", sizes: ["36", "37", "38", "39", "40", "41"],
-      image: "assets/slide-arena.svg", ground: "#E8D2BE", tint: "#B89468",
-      tagline: "Frescas y cómodas, pensadas para el calor y para ir sin prisa.",
-      specs: [["Estilo", "Sandalia casual"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
+      image: "assets/photos/sandalias-1.jpg", images: ["assets/photos/sandalias-1.jpg", "assets/photos/sandalias-2.jpg", "assets/photos/sandalias-3.jpg", "assets/photos/sandalias-4.jpg", "assets/photos/sandalias-5.jpg", "assets/photos/sandalias-6.jpg"], ground: "#E8DCCB", tint: "#C4A27A",
+      tagline: "Sandalias cómodas y con estilo, en varios modelos para el calor de todos los días.",
+      specs: [["Estilo", "Sandalias casuales"], ["Modelos", "Varios, escríbenos por el tuyo"], ["Para", "Mujer"]],
       ideal: "Paseos, playa y uso diario"
     },
     {
-      id: "eos", cat: "cuidado", vibe: "casual", name: "EOS Crema y Body Wash", gender: "Unisex", kind: "Cuidado personal",
-      price: 1150, sizeLabel: "Presentación", sizes: ["Crema", "Body wash"],
-      image: "assets/crema-corporal.svg", ground: "#E5DABF", tint: "#C9B48E",
-      tagline: "Cuidado diario para la piel: elige tu crema o tu body wash EOS.",
-      specs: [["Marca", "EOS"], ["Tipo", "Crema o body wash"], ["Uso", "Rutina diaria"]],
-      ideal: "Después del baño y rutina diaria"
+      id: "eos", cat: "cuidado", vibe: "casual", name: "EOS Body Lotion", gender: "Unisex", kind: "Loción corporal",
+      price: 1150, sizeLabel: "Aroma", sizes: ["Coconut Waters", "Beach Waves", "Pomegranate Raspberry", "Jasmine Peach", "Fresh + Easy", "Pink Champagne", "Crème de Pistache", "Vanilla Cashmere"],
+      image: "assets/photos/eos-1.jpg", images: ["assets/photos/eos-1.jpg", "assets/photos/eos-2.jpg", "assets/photos/eos-3.jpg", "assets/photos/eos-4.jpg"], ground: "#E6D9DD", tint: "#C4A27A",
+      tagline: "Loción corporal EOS con 24 horas de hidratación y aromas para todos los gustos.",
+      specs: [["Marca", "EOS Shea Better"], ["Contenido", "16 fl oz (473 ml)"], ["Hidratación", "24 horas"]],
+      ideal: "Rutina diaria de hidratación"
     },
     {
-      id: "vitaminas-mujer", cat: "cuidado", vibe: "elegante", name: "Vitaminas para mujeres", gender: "Femenino", kind: "Cuidado personal",
-      price: 1000, sizeLabel: "Talla", sizes: ["Único"],
-      image: "assets/vitaminas-mujer.svg", ground: "#EBD5CB", tint: "#C4A27A",
-      tagline: "Pastillas de vitaminas pensadas para el bienestar diario de ella.",
-      specs: [["Formato", "Pastillas"], ["Para", "Mujer"], ["Pago", "Contra entrega"]],
-      ideal: "Rutina de bienestar y cuidado diario"
+      id: "vitaminas", cat: "cuidado", vibe: "elegante", name: "Hair, Skin & Nails Gummies", gender: "Femenino", kind: "Vitaminas en gomitas",
+      price: 1000, sizeLabel: "Presentación", sizes: ["Único"],
+      image: "assets/photos/vitaminas-1.jpg", images: ["assets/photos/vitaminas-1.jpg"], ground: "#EFE0DF", tint: "#C4A27A",
+      tagline: "Gomitas de fresa de Nature's Bounty con biotina para pelo, piel y uñas.",
+      specs: [["Marca", "Nature's Bounty"], ["Contiene", "2,500 mcg de biotina"], ["Sabor", "Fresa"]],
+      ideal: "Rutina de bienestar y belleza"
     },
     {
-      id: "cargador", cat: "tecnologia", vibe: "casual", name: "Cargador portátil", gender: "Unisex", kind: "Accesorio tecnológico",
-      price: 1250, sizeLabel: "Talla", sizes: ["Único"],
-      image: "assets/cargador-portatil.svg", ground: "#D9D6C6", tint: "#2B2A1E",
-      tagline: "Energía extra en tu bolsillo para que tu celular nunca se quede sin batería.",
-      specs: [["Tipo", "Power bank"], ["Uso", "Celulares y accesorios"], ["Pago", "Contra entrega"]],
+      id: "cargador", cat: "tecnologia", vibe: "casual", name: "Cargador portátil Zonix Z123", gender: "Unisex", kind: "Power bank",
+      price: 1250, sizeLabel: "Color", sizes: ["Blanco", "Negro"],
+      image: "assets/photos/cargador-1.jpg", images: ["assets/photos/cargador-1.jpg"], ground: "#E3E6C8", tint: "#C4A27A",
+      tagline: "Power bank de 10,000 mAh con cables integrados y varias salidas para no quedarte sin batería.",
+      specs: [["Capacidad", "10,000 mAh · 3A"], ["Conexiones", "Micro, Type-C, iOS y USB-A"], ["Extra", "Luz integrada"]],
       ideal: "Viajes, universidad y trabajo"
     }
   ]

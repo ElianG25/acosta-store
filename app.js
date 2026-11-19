@@ -333,12 +333,20 @@
     ficImg.classList.add("swap");
     setTimeout(function () { if (fsel !== id) return; ficImg.src = p.image; ficImg.alt = p.name + ", " + p.kind; ficImg.classList.remove("swap"); }, first ? 0 : 250);
     ficha.innerHTML = '<h3>' + p.name + '</h3><p class="f-fam">' + p.kind + ' · ' + p.gender + '</p><p class="f-tag">' + p.tagline + '</p>' +
+      (p.images.length > 1 ? '<div class="thumbs" role="group" aria-label="Más fotos de ' + p.name + '">' + p.images.map(function (src, k) { return '<button type="button" data-thumb="' + src + '" aria-pressed="' + (k === 0) + '" aria-label="Foto ' + (k + 1) + '"><img src="' + src + '" alt="" width="64" height="64" loading="lazy"></button>'; }).join("") + '</div>' : "") +
       '<dl class="notes">' + p.specs.map(function (x) { return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join("") + '</dl>' +
       '<p class="f-ideal"><b>Ideal para:</b> ' + p.ideal + '</p>' +
       '<div class="f-buy" data-prod><span class="f-price">' + money(p.price) + '</span>' + sizeUi(p) + '<button class="mini mini-wine" type="button" ' + addAttrs(p) + '>' + ICON("bag") + ' Añadir</button></div>';
   }
   ficNames.addEventListener("click", function (e) { var b = e.target.closest("[data-id]"); if (b) selectFicha(b.getAttribute("data-id")); });
-  ficha.addEventListener("click", function (e) { var a = e.target.closest("[data-add]"); if (a) addFrom(a); });
+  ficha.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-thumb]");
+    if (t) {
+      $$("[data-thumb]", ficha).forEach(function (b) { b.setAttribute("aria-pressed", b === t ? "true" : "false"); });
+      ficImg.classList.add("swap"); setTimeout(function () { ficImg.src = t.getAttribute("data-thumb"); ficImg.classList.remove("swap"); }, 200); return;
+    }
+    var a = e.target.closest("[data-add]"); if (a) addFrom(a);
+  });
   selectFicha(P[0].id);
 
   /* ---------- quiz: encuentra tu aroma ---------- */
