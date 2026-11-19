@@ -7,8 +7,8 @@
 window.PEREZ = {
   brand: "Pérez Perfum",
   tagline: "Una esencia que habla por ti.",
-  whatsapp: "18297150290",            // formato internacional, sin signos
-  whatsappDisplay: "829-715-0290",
+  whatsapp: "18099996514",            // formato internacional, sin signos
+  whatsappDisplay: "809-999-6514",
   email: "perezperfum@gmail.com",
   social: "@perezperfum",
   instagramUrl: "https://instagram.com/perezperfum",

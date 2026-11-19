@@ -99,7 +99,7 @@
   function phoneError(v) {
     if (!v.trim()) return "";
     var d = phoneDigits(v);
-    if (d.length !== 10 || !/^(809|829|849)/.test(d)) return "Escribe un número dominicano válido, ej. 829-715-0290.";
+    if (d.length !== 10 || !/^(809|829|849)/.test(d)) return "Escribe un número dominicano válido, ej. 809-999-6514.";
     return "";
   }
   function shake(el) { if (reduce) return; el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
