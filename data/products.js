@@ -50,12 +50,19 @@ window.ACOSTA = {
       ideal: "Rutina diaria de hidratación"
     },
     {
-      id: "bbw", cat: "cuidado", vibe: "elegante", name: "Bath & Body Works", gender: "Unisex", kind: "Crema corporal y colonia",
-      ask: true,                          // precio por confirmar: se consulta por WhatsApp
-      price: 0, sizeLabel: "Aroma", sizes: ["Into the Night", "In the Stars", "Platinum", "Japanese Cherry Blossom", "A Thousand Wishes", "Champagne Toast"],
-      image: "assets/photos/bbw-1.jpg", images: ["assets/photos/bbw-1.jpg", "assets/photos/bbw-2.jpg", "assets/photos/bbw-3.jpg", "assets/photos/bbw-4.jpg", "assets/photos/bbw-5.jpg", "assets/photos/bbw-6.jpg"], ground: "#E9D9DD", tint: "#C4A27A",
-      tagline: "Crema corporal y colonia (fragrance mist) Bath & Body Works en aromas para todos los gustos.",
-      specs: [["Marca", "Bath & Body Works"], ["Productos", "Crema corporal y fragrance mist"], ["Precio", "Consúltalo por WhatsApp"]],
+      id: "bbw-colonia", cat: "cuidado", vibe: "elegante", name: "Colonia Bath & Body Works", gender: "Unisex", kind: "Colonia (fragrance mist)",
+      price: 1000, sizeLabel: "Aroma", sizes: ["Into the Night", "In the Stars", "Platinum", "Japanese Cherry Blossom", "Champagne Toast"],
+      image: "assets/photos/bbw-1.jpg", images: ["assets/photos/bbw-1.jpg", "assets/photos/bbw-2.jpg", "assets/photos/bbw-3.jpg", "assets/photos/bbw-4.jpg", "assets/photos/bbw-6.jpg"], ground: "#E9D9DD", tint: "#C4A27A",
+      tagline: "Colonia corporal Bath & Body Works en aromas dulces y frescos para todos los días.",
+      specs: [["Marca", "Bath & Body Works"], ["Producto", "Fragrance mist"], ["Precio", "RD$ 1,000 c/u"]],
+      ideal: "Regalos y uso diario"
+    },
+    {
+      id: "bbw-combo", cat: "cuidado", vibe: "elegante", name: "Combo Bath & Body Works", gender: "Unisex", kind: "Crema corporal + colonia",
+      price: 1800, sizeLabel: "Aroma", sizes: ["Into the Night", "In the Stars", "Platinum", "Japanese Cherry Blossom", "Champagne Toast"],
+      image: "assets/photos/bbw-1.jpg", images: ["assets/photos/bbw-1.jpg", "assets/photos/bbw-2.jpg", "assets/photos/bbw-3.jpg", "assets/photos/bbw-4.jpg", "assets/photos/bbw-6.jpg"], ground: "#E9D9DD", tint: "#C4A27A",
+      tagline: "El combo completo: crema corporal y colonia del mismo aroma a precio especial.",
+      specs: [["Marca", "Bath & Body Works"], ["Incluye", "Crema corporal + colonia"], ["Ahorro", "RD$ 200 vs. por separado"]],
       ideal: "Regalos y rutina de cuidado personal"
     },
     {
