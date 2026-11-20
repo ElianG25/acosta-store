@@ -215,3 +215,9 @@ html,body{overflow-x:clip}
 /* fotos con fondo recortado: base cálida uniforme */
 .card-img{background:linear-gradient(180deg,#EFE4D1,var(--paper))}
 .arch{background:linear-gradient(180deg,#EFE4D1,var(--paper))}
+
+/* quiénes somos */
+.about-in{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;align-items:start}
+.about-in h2{grid-column:1 / span 5}
+.about-in p{grid-column:6 / span 7;font-family:var(--serif);font-size:clamp(22px,2.4vw,34px);line-height:1.35;color:var(--ink)}
+@media(max-width:900px){.about-in h2,.about-in p{grid-column:1 / -1}}
